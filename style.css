@@ -1,0 +1,110 @@
+.logochamaco {
+  width: 180px;
+}
+.bg-chamaco {
+  background-image: linear-gradient(rgb(36, 36, 36), rgb(21, 21, 110));
+  background-size: cover;
+}
+.container-b {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.burger_nombre {
+  margin: 5px;
+  font-size: 200%;
+}
+.card-b {
+  background-color: rgba(194, 192, 192, 0.705);
+  width: 98%;
+  text-align: center;
+  margin-top: 2%;
+  border: 2px solid;
+  border-radius: 75px;
+}
+#precio {
+  color: rgba(255, 0, 0, 0.719);
+  text-decoration: underline;
+}
+.burger__img {
+  border-radius: 10%;
+  width: 80%;
+  height: auto;
+}
+.card__description {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  list-style-type: none;
+}
+.btn__burger {
+  font-size: larger;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 5%;
+  padding: 3%;
+  border: 3px solid rgba(255, 0, 0, 0.719);
+  border-radius: 75px;
+  background-color: rgba(173, 0, 0, 0.32);
+  color: rgba(255, 255, 255, 0.678);
+  transition: transform 300ms ease-out;
+}
+.btn__burger:hover {
+  transform: translate(0px, 0px) scale(1.1, 1.1);
+}
+.img_carrito {
+  width: 100px;
+}
+@media only screen and (min-width: 620px) {
+  .card-b {
+    width: 95%;
+    margin: 1%;
+  }
+  .container-b {
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .burger__nombre {
+    font-size: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .container-b {
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .card-b {
+    width: 90%;
+    margin: 1%;
+  }
+  .burger__nombre {
+    font-size: 150%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .t360 {
+    transition: transform 1378ms ease-out;
+  }
+  .t360:hover {
+    transform: rotate(360deg) translate(0px, 0px) scale(1.1, 1);
+  }
+
+  .relleno {
+    display: none;
+  }
+  .burger__img {
+    object-view-box: inset(0%);
+    transition: all 0.75s;
+
+    filter: grayscale(80%);
+  }
+
+  .burger__img:hover {
+    object-view-box: inset(17%);
+    object-position: 0px -30px;
+
+    filter: grayscale(0%);
+  }
+}
