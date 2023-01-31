@@ -17,6 +17,7 @@ function agregar_al_carrito(e) {
     img: imagen_producto,
     cantidad: 1,
   };
+
   total_precio += parseInt(precio_producto);
 
   mostrar_carrito(producto);
