@@ -22,6 +22,8 @@ function agregar_al_carrito(e) {
 
   mostrar_carrito(producto);
   mostrar_total();
+  carrito_storage.push(producto);
+  localStorage.setItem("carrito", JSON.stringify(carrito_storage));
 }
 
 function mostrar_carrito(producto) {
@@ -51,5 +53,3 @@ function borrar_producto(e) {
   }
   e.target.parentNode.remove();
 }
-
-localStorage.setItem("carrito", JSON.stringify(carrito));
