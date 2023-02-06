@@ -24,6 +24,24 @@
     <title>AyChamaco|Burgershop</title>
   </head>
   <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Finalizar compra</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+            <button type="button" class="btn btn-primary">PAGAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---MODAL--->
     <header class="sticky-top">
       <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
@@ -88,7 +106,7 @@
                 <i class="bi bi-cart2 fs-1"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-dark gap-2 ">
-                <p class="text-center"  id="total_precio"></p> <span class=" text-center justify-content-center d-flex"><button class="btn btn-success"   id="finalizar-compra">Finalizar compra</button></span>
+                <p class="text-center"  id="total_precio"></p> <span class=" text-center justify-content-center d-flex"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"  id="finalizar-compra">Finalizar compra</button></span>
                 
             </ul>
           </div>

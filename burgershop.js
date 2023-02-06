@@ -3,6 +3,7 @@ let card = document.getElementsByClassName("card-b");
 for (let c of card) {
   c.addEventListener("click", agregar_al_carrito);
 }
+
 let total_precio = 0;
 function agregar_al_carrito(e) {
   let nombre_producto =
@@ -28,7 +29,7 @@ function agregar_al_carrito(e) {
 
 function mostrar_carrito(producto) {
   let lista = document.createElement("li");
-  lista.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><span class=" mx-2">${producto.cantidad}</span><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>
+  lista.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>
     <button class="btn btn-danger borrar_elemento mx-2">Borrar</button>`;
 
   let carrito = document.getElementsByClassName("dropdown-menu")[0];
@@ -52,4 +53,15 @@ function borrar_producto(e) {
     mostrar_total();
   }
   e.target.parentNode.remove();
+}
+let btn_finalizar_compra = document.getElementById("finalizar-compra");
+btn_finalizar_compra.addEventListener("click", function () {
+  finalizar_compra(producto);
+});
+
+function finalizar_compra(producto) {
+  let boleta = document.createElement("p");
+  boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
+  let impresion = document.getElementsByClassName("modal-body");
+  impresion.appendChild(boleta);
 }

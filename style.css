@@ -21,6 +21,9 @@
   border: 2px solid;
   border-radius: 75px;
 }
+.cantidad {
+  width: 35px;
+}
 #precio {
   color: rgba(0, 0, 0, 0.719);
   text-decoration: underline;
