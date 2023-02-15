@@ -55,13 +55,11 @@ function borrar_producto(e) {
   e.target.parentNode.remove();
 }
 let btn_finalizar_compra = document.getElementById("finalizar-compra");
-btn_finalizar_compra.addEventListener("click", function () {
-  finalizar_compra(producto);
-});
+btn_finalizar_compra.addEventListener("click", finalizar_compra);
 
 function finalizar_compra(producto) {
   let boleta = document.createElement("p");
   boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
   let impresion = document.getElementsByClassName("modal-body");
-  impresion.appendChild(boleta);
+  impresion[0].append(boleta);
 }
