@@ -123,14 +123,11 @@ for (let c of card) {
   c.addEventListener("click", agregar_al_carrito);
 }
 function agregar_al_carrito(burger_nombre) {
-  // Busca la hamburguesa en el array de burgers
   let burger_encontrada = burgers.find(
     (burger) => burger.nombre === burger_nombre
   );
 
-  // Verifica que se haya encontrado una hamburguesa antes de continuar
   if (burger_encontrada) {
-    // Crea un nuevo objeto burger con los datos de la hamburguesa encontrada
     let burger = {
       nombre: burger_encontrada.nombre,
       precio: burger_encontrada.precio,
@@ -150,40 +147,44 @@ function agregar_al_carrito(burger_nombre) {
 function mostrar_total() {
   document.querySelector("#total_precio").innerHTML = `Total: $${total_precio}`;
 }
-function mostrar_carrito(burger_encontrada) {
-  let burger_carrito = {
-    nombre: burger_encontrada.nombre,
-    precio: burger_encontrada.precio,
+function mostrar_carrito(burger_c2) {
+  let burger_c3 = burgers.find((burger) => burger.nombre === burger_c2);
 
-    cantidad: 1,
-  };
-  let lista = document.createElement("li");
-  lista.innerHTML = `<input type="number" class="cantidad"><span>${burger_carrito.nombre}</span> <span class="mx-1 precio_lista ">$${burger_carrito.precio}</span>
+  if (burger_c3) {
+    let burger_carrito = {
+      nombre: burger_c3.nombre,
+      precio: burger_c3.precio,
+
+      cantidad: 1,
+    };
+    let lista = document.createElement("li");
+    lista.innerHTML = `<input type="number" class="cantidad"><span>${burger_carrito.burger_c3.nombre}</span> <span class="mx-1 precio_lista ">$${burger_carrito.burger_c3.precio}</span>
       <button class="btn btn-danger borrar_elemento mx-2">Borrar</button>`;
 
-  let carrito = document.getElementsByClassName("dropdown-menu")[0];
-  carrito.appendChild(lista);
-  let btn_borrar = document.querySelectorAll(".borrar_elemento");
-  for (let boton of btn_borrar) {
-    boton.addEventListener("click", borrar_producto);
+    let carrito = document.getElementsByClassName("dropdown-menu")[0];
+    carrito.appendChild(lista);
+    let btn_borrar = document.querySelectorAll(".borrar_elemento");
+    for (let boton of btn_borrar) {
+      boton.addEventListener("click", borrar_producto);
+    }
   }
-}
-function borrar_producto(e) {
-  let precio_producto =
-    e.target.parentNode.querySelector(".precio_lista").textContent;
-  precio_producto = precio_producto.replace("$", "");
-  if (!isNaN(precio_producto)) {
-    total_precio -= parseInt(precio_producto);
-    mostrar_total();
+  function borrar_producto(e) {
+    let precio_producto =
+      e.target.parentNode.querySelector(".precio_lista").textContent;
+    precio_producto = precio_producto.replace("$", "");
+    if (!isNaN(precio_producto)) {
+      total_precio -= parseInt(precio_producto);
+      mostrar_total();
+    }
+    e.target.parentNode.remove();
   }
-  e.target.parentNode.remove();
-}
-let btn_finalizar_compra = document.getElementById("finalizar-compra");
-btn_finalizar_compra.addEventListener("click", finalizar_compra);
+  let btn_finalizar_compra = document.getElementById("finalizar-compra");
+  btn_finalizar_compra.addEventListener("click", finalizar_compra);
 
-function finalizar_compra(producto) {
-  let boleta = document.createElement("p");
-  boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
-  let impresion = document.getElementsByClassName("modal-body");
-  impresion[0].append(boleta);
+  function finalizar_compra(producto) {
+    let boleta = document.createElement("p");
+    boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
+    let impresion = document.getElementsByClassName("modal-body");
+    impresion[0].append(boleta);
+  }
 }

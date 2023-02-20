@@ -25,6 +25,11 @@ function agregar_al_carrito(e) {
   mostrar_total();
   carrito_storage.push(producto);
   localStorage.setItem("carrito", JSON.stringify(carrito_storage));
+  Toastify({
+    text: "Producto agregado",
+    duration: 2500,
+    style: { background: "#98ff98 ", color: "#393737" },
+  }).showToast();
 }
 
 function mostrar_carrito(producto) {
@@ -57,9 +62,14 @@ function borrar_producto(e) {
 let btn_finalizar_compra = document.getElementById("finalizar-compra");
 btn_finalizar_compra.addEventListener("click", finalizar_compra);
 
-function finalizar_compra(producto) {
-  let boleta = document.createElement("p");
-  boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
-  let impresion = document.getElementsByClassName("modal-body");
-  impresion[0].append(boleta);
+function finalizar_compra() {
+  let impresion = document.getElementsByClassName("modal-body")[0];
+  impresion.innerHTML = "";
+  for (let i = 0; i < carrito_storage.length; i++) {
+    let producto = carrito_storage[i];
+    let boleta = document.createElement("p");
+    boleta.innerHTML = `<img class="img_carrito m-1" src="${producto.img}"><input type="number" class="cantidad"><span>${producto.nombre}</span> <span class="mx-1 precio_lista ">$${producto.precio}</span>`;
+    impresion.appendChild(boleta);
+  }
+  mostrar_total();
 }
